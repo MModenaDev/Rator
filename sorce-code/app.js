@@ -25,9 +25,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.locals.title = 'Raptor';
+app.locals.title = 'Rator';
 
 const index = require('./routes/index');
 app.use('/', index);
+const review = require('./routes/reviewRoutes');
+app.use('/review', review);
+const user = require('./routes/userRoutes');
+app.use('/user', user);
+const curator = require('./routes/curatorRoutes');
+app.use('/curator', curator);
 
 module.exports = app;
