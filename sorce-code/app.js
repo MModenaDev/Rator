@@ -82,6 +82,8 @@ app.locals.title = 'Rator';
 
 const index = require('./routes/index');
 app.use('/', index);
+const auth = require('./routes/authRoutes');
+app.use('/authentication', auth);
 const review = require('./routes/reviewRoutes');
 app.use('/review', review);
 const user = require('./routes/userRoutes');
