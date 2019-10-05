@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const bodyParser   = require("body-parser");
-const session      = require("express-session");
 const MongoStore   = require("connect-mongo")(session);
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -9,8 +8,15 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const session      = require("express-session");
+const bcrypt       = require("bcrypt");
+const passport     = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+
+const User         = require("./models/user");
+
 mongoose
-  .connect('mongodb://localhost/raptor', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -29,13 +35,44 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(session({
-  secret: "basic-auth-secret",
-  cookie: { maxAge: 60000 },
+  secret: process.env.SECRET,
+  resave: true,
+  saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
+    ttl: 24 * 60 * 60
   })
 }));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+
+passport.deserializeUser((id, cb) => {
+  User.findById(id, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
+passport.use(new LocalStrategy((username, password, next) => {
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(null, false, { message: "Incorrect username" });
+    }
+    if (!bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Incorrect password" });
+    }
+
+    return next(null, user);
+  });
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -49,7 +86,5 @@ const review = require('./routes/reviewRoutes');
 app.use('/review', review);
 const user = require('./routes/userRoutes');
 app.use('/user', user);
-const curator = require('./routes/curatorRoutes');
-app.use('/curator', curator);
 
 module.exports = app;
