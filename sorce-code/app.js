@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const bodyParser   = require("body-parser");
-const MongoStore   = require("connect-mongo")(session);
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const mongoose     = require('mongoose');
@@ -9,6 +8,8 @@ const logger       = require('morgan');
 const path         = require('path');
 
 const session      = require("express-session");
+const MongoStore   = require("connect-mongo")(session);
+
 const bcrypt       = require("bcrypt");
 const passport     = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -18,7 +19,7 @@ const User         = require("./models/user");
 mongoose
   .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`) 
   })
   .catch(err => {
     console.error('Error connecting to mongo', err)
