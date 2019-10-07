@@ -30,7 +30,7 @@ const userSchema = new Schema({
         default: 0
     },
     favoriteGenres: {
-        type: Array,
+        type: [String],
         enum: [
             "comedy",
             "sci-fi",
