@@ -2,7 +2,7 @@
   "name": "raptor",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
     "start-dev": "nodemon ./bin/www"
