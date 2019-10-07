@@ -6,6 +6,7 @@ const express      = require('express');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const favicon      = require("serve-favicon");
 
 const session      = require("express-session");
 const MongoStore   = require("connect-mongo")(session);
