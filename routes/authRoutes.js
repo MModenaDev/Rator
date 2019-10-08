@@ -17,12 +17,13 @@ router.post("/signup", (req, res, next) => {
     const name = req.body.name;
     const email = req.body.email
     const password = req.body.password;
+    const role = req.body.role;
   
     if (name === "" || password === "" || email === "") {
       res.render("error", { message: "Indicate username, password and email" });
       return;
     }
-  
+
     User.findOne({ email })
     .then(user => {
       if (user !== null) {
@@ -36,14 +37,16 @@ router.post("/signup", (req, res, next) => {
       const newUser = new User({
         name,
         password: hashPass,
-        email
+        email,
+        role
       });
   
       newUser.save((err) => {
         if (err) {
           res.render("error", { message: "Something went wrong" });
         } else {
-          res.redirect("/");
+          if(role==="CURATOR") res.render("users/edit", {user: req.user});
+          else res.render("users/profile", {user: req.user});
         }
       });
     })
