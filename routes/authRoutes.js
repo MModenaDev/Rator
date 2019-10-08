@@ -1,33 +1,32 @@
 const express = require('express');
 const router  = express.Router();
+const passport = require('passport');
 
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 const User = require("../models/user");
 
-router.get('/signin', (req, res, next) => {
-    res.render('authenticator/signin');
-});
-
-router.get('/signup', (req, res, next) => {
-    res.render('authenticator/signup');
-});
+router.post("/login", passport.authenticate('local-login', {
+  successRedirect: "/",
+  failureRedirect: "/error",
+  failureFlash: true
+}));
 
 router.post("/signup", (req, res, next) => {
     const name = req.body.name;
     const email = req.body.email
     const password = req.body.password;
   
-    if (username === "" || password === "" || email === "") {
-      res.render("auth/signup", { message: "Indicate username, password and email" });
+    if (name === "" || password === "" || email === "") {
+      res.render("error", { message: "Indicate username, password and email" });
       return;
     }
   
     User.findOne({ email })
     .then(user => {
       if (user !== null) {
-        res.render("auth/signup", { message: "Email already in use" });
+        res.render("error", { message: "Email already in use" });
         return;
       }
   
@@ -35,14 +34,14 @@ router.post("/signup", (req, res, next) => {
       const hashPass = bcrypt.hashSync(password, salt);
   
       const newUser = new User({
-        username,
+        name,
         password: hashPass,
-        name
+        email
       });
   
       newUser.save((err) => {
         if (err) {
-          res.render("auth/signup", { message: "Something went wrong" });
+          res.render("error", { message: "Something went wrong" });
         } else {
           res.redirect("/");
         }
@@ -53,4 +52,8 @@ router.post("/signup", (req, res, next) => {
     })
   });
 
+  router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
 module.exports = router;
