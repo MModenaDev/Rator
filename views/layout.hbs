@@ -24,7 +24,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="/authentication/login" method="post">
             <div class="form-group">
               <label for="inputEmail">Email</label>
               <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email">
@@ -59,24 +59,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="/authentication/signup" method="post">
             <div class="form-group">
-              <label for="nome">Nome</label>
-              <input class="form-control" id="nome" type="text" placeholder="Digite o seu nome completo">
-            </div>
-          </form>
-          <form>
-            <div class="form-group">
-              <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email">
+              <label for="name">Nome</label>
+              <input class="form-control" id="nome" type="text" placeholder="Digite o seu nome completo" name="name">
             </div>
             <div class="form-group">
-              <label for="inputPassword">Senha</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email">
             </div>
             <div class="form-group">
-              <label for="inputPassword">Digite sua senha novamente</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha novamente">
+              <label for="password">Senha</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha" name="password">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
