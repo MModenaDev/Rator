@@ -12,6 +12,14 @@ body {
   height: 50px;
 }
 
+.profile-page {
+  height: 90px;
+}
+
+.star {
+  height: 40px;
+}
+
 .logo {
   font-family: 'Mansalva', cursive;
 }
