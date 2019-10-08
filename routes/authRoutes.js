@@ -7,11 +7,10 @@ const bcryptSalt = 10;
 
 const User = require("../models/user");
 
-router.post("/signin", passport.authenticate("local", {
+router.post("/login", passport.authenticate('local-login', {
   successRedirect: "/",
-  failureRedirect: "/profile",
-  failureFlash: true,
-  passReqToCallback: true
+  failureRedirect: "/error",
+  failureFlash: true
 }));
 
 router.post("/signup", (req, res, next) => {
@@ -20,14 +19,14 @@ router.post("/signup", (req, res, next) => {
     const password = req.body.password;
   
     if (name === "" || password === "" || email === "") {
-      res.render("auth/signup", { message: "Indicate username, password and email" });
+      res.render("error", { message: "Indicate username, password and email" });
       return;
     }
   
     User.findOne({ email })
     .then(user => {
       if (user !== null) {
-        res.render("auth/signup", { message: "Email already in use" });
+        res.render("error", { message: "Email already in use" });
         return;
       }
   
@@ -42,7 +41,7 @@ router.post("/signup", (req, res, next) => {
   
       newUser.save((err) => {
         if (err) {
-          res.render("auth/signup", { message: "Something went wrong" });
+          res.render("error", { message: "Something went wrong" });
         } else {
           res.redirect("/");
         }
@@ -53,4 +52,8 @@ router.post("/signup", (req, res, next) => {
     })
   });
 
+  router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
 module.exports = router;

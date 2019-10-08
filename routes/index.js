@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     .sort({ rank: 1 })
     .limit(10)
     .then((data) => {
-      res.render('index', {data});
+      res.render('index', {data, user: req.user});
     })
     .catch(err => console.log(err));
 });
