@@ -1,12 +1,15 @@
 <div class="container">
   <div class="row d-flex justify-content-between mt-4">
     <div class="col">
-      <img src="/img/user.png" class="profile-page" alt="user">
-      <p>John da Silva</p>
+      <img src={{data.image}} class="profile-page" alt="user">
+      <p>{{data.name}}</p>
+      <input value="{{data.id}}" id="idValue" hidden>
     </div>
     {{!-- <div class="col col xs-6 col-sm-8 col-lg-8"></div> --}}
     <div class="col d-flex align-items-center d-flex justify-content-end">
-      <a href="#"><img src="/img/star-vazio.png" id ="star"class="star" alt="star-vazio"></a> 
+      {{#if showStar}}
+      <span id="starHit"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"><img></span>
+      {{/if}}
     </div>
   </div>
   <div class="row">
@@ -14,22 +17,7 @@
       <p>Sobre:</p>
     </div>
     <div class="col xs-6 col-sm-8 col-lg-10 text-left mb-5">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa sequi cum modi temporibus nostrum nesciunt
-        explicabo incidunt placeat ut, provident delectus quis repellat accusamus. Ad, reprehenderit voluptate? Cumque,
-        quisquam sapiente? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores similique, repellat hic dolore expedita excepturi repellendus atque error reprehenderit voluptas officiis nostrum quae ex eaque voluptate quasi nam assumenda dicta.</p>
-    </div>
-  </div>
-  {{!-- <div class="row mt-4">
-    <div class="col">
-      <h5>Lista salvas:</h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col mt-4">
-      <img src="/img/user.png" class="profile" alt="user">
-    </div>
-    <div class="col"> --}}
-
+      <p>{{data.description}}</p>
     </div>
   </div>
 </div>

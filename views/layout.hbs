@@ -58,7 +58,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="/authentication/signup" method="post">
+          <form action="/signup" method="post">
             <div class="form-group">
               <label for="name">Nome</label>
               <input class="form-control" id="nome" type="text" placeholder="Digite o seu nome completo" name="name">
@@ -71,6 +71,13 @@
               <label for="password">Senha</label>
               <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha"
                 name="password">
+            </div>
+            <div class="form-group">
+              <label for="role">Tipo</label>
+              <select class="form-control" name="role">
+                <option value="USER" selected>User</option>
+                <option value="CURATOR">Curator</option>
+              </select>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
@@ -90,16 +97,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="/reviews/search" class="nav-link">Buscar</a>
-        </li>
-        </li>
         {{#if user}}
+        <li class="nav-item">
+          <a href="/review/search" class="nav-link">Buscar</a>
+        </li>
         <li class="nav-item">
           <a href="/logout" class="nav-link">Log-out</a>
         </li>
         <li class="nav-item">
-          <a href="/login" class="btn btn-outline-primary ml-md-2">{{user.name}}</a>
+          <a href="/user/profile/{{user.id}}" class="btn btn-outline-primary ml-md-2">{{user.name}}</a>
         </li>
         {{else}}
         <li class="nav-item">

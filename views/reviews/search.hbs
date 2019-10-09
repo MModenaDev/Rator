@@ -1,26 +1,38 @@
 <section class="container">
-  <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Digite o nome do filme" aria-label="search"
-        aria-describedby="button-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-primary" type="button" id="button-addon2">Buscar</button>
-      </div>
+    <div class="input-group mb-3">
+        <form action="/review/search" method="get">
+            <select class="form-control mb-2" name="genre">
+                <option value="" selected>All</option>
+                <option value="action">Action</option>
+                <option value="animation">Animation</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+                <option value="sci-fi">Sci-fi</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Buscar">
+        </form>
     </div>
-  <div>
-    <h4 class="text-center mt-5">BEST CURATORS</h4>
-  </div>
-  {{#each data}}
-  <div class="row mt-4">
-    <div class="col text-center">
-      <img src={{ this.image }} class="profile" alt="user">
-      <p>{{ this.name}}</p>
+    <div>
+        <h4 class="text-center mt-5">RESULTS:</h4>
     </div>
-    <div class="col xs-6 col-sm-8 col-lg-10">
-      {{ this.description }}
-    </div>
-    <div class="col">
-      <p class="text-right">#{{ @index }}</p>
-    </div>
-  </div>
-  {{/each}}
+    {{#each data}}
+    <a href="/user/profile/{{this.id}}">
+        <div class="row mt-4">
+            <div class="col text-center">
+                <img src={{ this.image }} class="profile" alt="user">
+                <p>{{ this.name}}</p>
+            </div>
+            <div class="col xs-6 col-sm-8 col-lg-10">
+                {{ this.description }}
+            </div>
+            <div class="col">
+                <p class="text-right">#{{ @index }}</p>
+            </div>
+        </div>
+    </a>
+    {{/each}}
 </section>

@@ -35,7 +35,7 @@ const app = express();
 
 app.use(session({
   secret: process.env.SECRET,
-  resave: true,
+  resave: false,
   saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
