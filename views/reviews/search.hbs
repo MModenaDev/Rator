@@ -1,38 +1,51 @@
 <section class="container">
-    <div class="input-group mb-3">
-        <form action="/review/search" method="get">
-            <select class="form-control mb-2" name="genre">
-                <option value="" selected>All</option>
-                <option value="action">Action</option>
-                <option value="animation">Animation</option>
-                <option value="adventure">Adventure</option>
-                <option value="comedy">Comedy</option>
-                <option value="drama">Drama</option>
-                <option value="horror">Horror</option>
-                <option value="romance">Romance</option>
-                <option value="sci-fi">Sci-fi</option>
-                <option value="thriller">Thriller</option>
-            </select>
-            <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Buscar">
-        </form>
-    </div>
-    <div>
-        <h4 class="text-center mt-5">RESULTS:</h4>
-    </div>
-    {{#each data}}
-    <a href="/user/profile/{{this.id}}">
-        <div class="row mt-4">
-            <div class="col text-center">
-                <img src={{ this.image }} class="profile" alt="user">
-                <p>{{ this.name}}</p>
-            </div>
-            <div class="col xs-6 col-sm-8 col-lg-10">
-                {{ this.description }}
-            </div>
-            <div class="col">
-                <p class="text-right">#{{ @index }}</p>
-            </div>
+    <div class=" row input-group mb-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form action="/review/search" method="get">
+                <div class="input-group">
+                    <select class="custom-select mb-2 mt-4" name="genre">
+                        <option value="" selected>All</option>
+                        <option value="action">Action</option>
+                        <option value="animation">Animation</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="horror">Horror</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Sci-fi</option>
+                        <option value="thriller">Thriller</option>
+                    </select>
+                    <div class="input-group-append align-items-center mt-3">
+                        <input class="btn btn-outline-secondary " type="submit" id="button-addon2" value="Buscar">
+                    </div>
+                </div>
+            </form>
         </div>
-    </a>
-    {{/each}}
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h4 class="text-center mt-5">RESULTS:</h4>
+            {{#each data}}
+            <a href="/user/profile/{{this.id}}">
+                <div class="row mt-4">
+                    <div class="col text-center">
+                        <img src={{ this.image }} class="profile" alt="user">
+                        <p>{{ this.name}}</p>
+                    </div>
+                    <div class="col xs-6 col-sm-8 col-lg-10">
+                        {{ this.description }}
+                    </div>
+                    <div class="col">
+                        <p class="text-right">#{{ @index }}</p>
+                    </div>
+                </div>
+            </a>
+            {{/each}}
+        </div>
+        <div class="col-2"></div>
+    </div>
+    </div>
 </section>
