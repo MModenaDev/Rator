@@ -9,7 +9,7 @@ const User = require("../models/user");
 
 router.post("/login", passport.authenticate('local-login', {
   successRedirect: "/",
-  failureRedirect: "/error",
+  failureRedirect: "/",
   failureFlash: true
 }));
 
