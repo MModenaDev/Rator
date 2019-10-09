@@ -59,7 +59,7 @@ router.post('/edit/:id', (req, res, next) => {
                 favoriteGenres: [genre1, genre2, genre3]
             })
             .then(() => {
-                res.redirect(`/user/${id}`);
+                res.redirect(`/user/profile/${id}`);
             })
             .catch(err => console.log(err));
     } else if (action === "delete") {
