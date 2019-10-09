@@ -1,9 +1,25 @@
+<div class="modal" id="modalFilme" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Escolha seu filme:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="movieResults">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Digite o nome do filme" aria-label="search"
-      aria-describedby="button-addon2">
+      aria-describedby="button-addon2" id="movieSearch">
     <div class="input-group-append">
-      <button class="btn btn-outline-primary" type="button" id="button-addon2">Buscar</button>
+      <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalFilme" id="movieSearchButton">Buscar</button>
     </div>
   </div>
   <div class="row">

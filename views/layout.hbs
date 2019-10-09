@@ -101,6 +101,11 @@
         <li class="nav-item">
           <a href="/review/search" class="nav-link">Buscar</a>
         </li>
+        {{#if showCurator}}
+        <li class="nav-item">
+          <a href="/review/create" class="nav-link">Review</a>
+        </li>
+        {{/if}}
         <li class="nav-item">
           <a href="/logout" class="nav-link">Log-out</a>
         </li>
@@ -169,6 +174,7 @@
     </script>
 
   <script src="/javascript/script.js"></script>
+  <script src="/javascript/movie.js"></script>
 </body>
 
 </html>
