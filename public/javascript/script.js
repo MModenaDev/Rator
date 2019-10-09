@@ -22,5 +22,5 @@ starClick.onclick = (e) => {
       }
     })
     .catch(err => console.log(err))
-  
 }
+

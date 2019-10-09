@@ -13,7 +13,7 @@ router.get('/profile/:id', (req, res, next) => {
         .catch(err => console.log(err));
 });
 
-router.get('/edit-profile', (req, res, next) => {
+router.get('/editprofile', (req, res, next) => {
     const { id } = req.user;
     User
         .findById(id)
