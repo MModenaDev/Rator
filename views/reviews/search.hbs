@@ -1,1 +1,26 @@
-<h1>search review</h1>
+<section class="container">
+  <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Digite o nome do filme" aria-label="search"
+        aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary" type="button" id="button-addon2">Buscar</button>
+      </div>
+    </div>
+  <div>
+    <h4 class="text-center mt-5">BEST CURATORS</h4>
+  </div>
+  {{#each data}}
+  <div class="row mt-4">
+    <div class="col text-center">
+      <img src={{ this.image }} class="profile" alt="user">
+      <p>{{ this.name}}</p>
+    </div>
+    <div class="col xs-6 col-sm-8 col-lg-10">
+      {{ this.description }}
+    </div>
+    <div class="col">
+      <p class="text-right">#{{ @index }}</p>
+    </div>
+  </div>
+  {{/each}}
+</section>
