@@ -1,60 +1,82 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 mt-4 mb-4">
-      <div class="form-group">
-        <h5>DESCRIÇÃO:</h5>
-        <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
-          earum ex accusamus facere! Delectus id quis
-          minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
-        <textarea class="form-control" id="descricaoTextArea" rows="6"></textarea>
+  <form action="/user/edit/{{ data.id }}" method="POST">
+    <div class="row">
+      <div class="col-md-6 mt-4 mb-4">
+        <div class="form-group">
+          <label for="descricaoTextArea">NAME:</label>
+          <input class="form-control" id="descricaoTextArea" value={{ data.name }} name="name"></input>
+        </div>
+        <div class="form-group">
+          <label for="descricaoTextArea">EMAIL:</label>
+          <input class="form-control" id="descricaoTextArea" value={{ data.email }} name="email"></input>
+        </div>
+        <div class="form-group">
+          <label for="descricaoTextArea">ROLE:</label>
+          <select class="form-control mb-2" name="role">
+            <option value="USER">User</option>
+            <option value="CURATOR">Curator</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="col-md-6 mt-4 mb-4">
+
       </div>
     </div>
-    <div class="col-md-6 mt-4">
-      <div class="form-group">
-        <h5>GENERO:</h5>
-        <label for="descricaoTextArea">LoreLoremm ipsum dolor sit amet consectetur adipisicing elit. Rem alias
-          earum ex accusamus facere! Delectus id quis
-          minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
-        <select class="form-control mb-2">
-          <option>Ação</option>
-          <option>Animação</option>
-          <option>Aventura</option>
-          <option>Comédia</option>
-          <option>Aventura</option>
-          <option>Ficção cientifica</option>
-          <option>Romance</option>
-          <option>Suspense</option>
-          <option>Terror</option>
-          <option>Drama</option>
-        </select>
-        <select class="form-control mb-2">
-          <option>Ação</option>
-          <option>Animação</option>
-          <option>Aventura</option>
-          <option>Comédia</option>
-          <option>Aventura</option>
-          <option>Ficção cientifica</option>
-          <option>Romance</option>
-          <option>Suspense</option>
-          <option>Terror</option>
-          <option>Drama</option>
-        </select>
-        <select class="form-control mb-2">
-          <option>Ação</option>
-          <option>Animação</option>
-          <option>Aventura</option>
-          <option>Comédia</option>
-          <option>Aventura</option>
-          <option>Ficção cientifica</option>
-          <option>Romance</option>
-          <option>Suspense</option>
-          <option>Terror</option>
-          <option>Drama</option>
-        </select>
-        <a href="#" class="btn btn-outline-primary mt-2">Enviar</a>
+    {{#if showCurator}}
+    <div class="row">
+      <div class="col-md-6 mt-4 mb-4">
+        <div class="form-group">
+          <h5>DESCRIÇÃO:</h5>
+          <label for="descricaoTextArea">Tente resumir seu estilo de curador para ter uma melhor visibilidade dentro da
+            plataforma</label>
+          <textarea class="form-control" id="descricaoTextArea" rows="6" name="description">{{ data.description }}</textarea>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="form-group">
+          <h5>GENERO:</h5>
+          <label for="descricaoTextArea">Escolha seus gêneros favoritos para possibilitar um melhor resultado para você,
+            e para o usuario:</label>
+          <select class="form-control mb-2" name="genre1">
+            <option value="action" selected>Action</option>
+            <option value="animation">Animation</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-fi</option>
+            <option value="thriller">Thriller</option>
+          </select>
+          <select class="form-control mb-2" name="genre2">
+            <option value="action">Action</option>
+            <option value="animation" selected>Animation</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-fi</option>
+            <option value="thriller">Thriller</option>
+          </select>
+          <select class="form-control mb-2" name="genre3">
+            <option value="action">Action</option>
+            <option value="animation">Animation</option>
+            <option value="adventure" selected>Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-fi</option>
+            <option value="thriller">Thriller</option>
+          </select>
+        </div>
+      </div>
+      {{/if}}
+      <button type="submit" class="btn btn-outline-primary mt-2">Editar</button>
     </div>
-  </div>
-</div>
+  </form>
 </div>
 
 {{!-- <select class="form-control">

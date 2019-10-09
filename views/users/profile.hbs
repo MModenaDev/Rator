@@ -3,10 +3,13 @@
     <div class="col">
       <img src={{data.image}} class="profile-page" alt="user">
       <p>{{data.name}}</p>
+      <input value="{{data.id}}" id="idValue">
     </div>
     {{!-- <div class="col col xs-6 col-sm-8 col-lg-8"></div> --}}
     <div class="col d-flex align-items-center d-flex justify-content-end">
-      <a href="#"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"></a>
+      {{#if showStar}}
+      <span id="starHit"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"><img></span>
+      {{/if}}
     </div>
   </div>
   <div class="row">
