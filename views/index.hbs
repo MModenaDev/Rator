@@ -3,7 +3,6 @@
     <div class="col-lg-7 p-0">
 
       {{!-- Carrousel --}}
-
       <div class="carrousel">
         <div id="carouselSlidesOnly" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -23,8 +22,11 @@
     <div class="col-lg-5 p-4 align-self-center">
       <h1 class="display-4"> Encontre as melhores seleções de filmes</h1>
       <p class="lead">Depois é so separar a pipoca e maratonar.</p>
+{{#if user}}
+{{else}}
       <button type="submit" class="btn btn-primary" data-toggle="modal"
             data-target="#modalCadastro">Increva-se</button>
+{{/if}}
     </div>
 
     {{!-- Fecha Carrousel --}}
@@ -47,13 +49,6 @@
     <h4 class="text-center mt-5">BEST CURATORS</h4>
   </div>
   {{#each data}}
-  <div class="row mt-4">
-    <div class="col text-center">
-      <img src={{ this.image }} class="profile" alt="user">
-      <p>{{ this.name}}</p>
-    </div>
-    {{#each data}}
-    <a href="/user/profile/{{this.id}}">
       <div class="row mt-4">
         <div class="col text-center">
           <img src={{ this.image }} class="profile" alt="user">
