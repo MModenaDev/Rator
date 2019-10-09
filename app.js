@@ -6,6 +6,7 @@ const express      = require('express');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const flash        = require("connect-flash");
 // const favicon      = require("serve-favicon");
 
 const session      = require("express-session");
@@ -31,14 +32,10 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 app.use(session({
   secret: process.env.SECRET,
-  resave: true,
+  resave: false,
   saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
@@ -47,7 +44,7 @@ app.use(session({
 }));
 
 passport.serializeUser((user, cb) => {
-  cb(null, user._id);
+  cb(null, user.id);
 });
 
 passport.deserializeUser((id, cb) => {
@@ -57,8 +54,8 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-passport.use(new LocalStrategy((username, password, next) => {
-  User.findOne({ username }, (err, user) => {
+passport.use("local-login", new LocalStrategy({usernameField: "email", passwordField: "password"},(username, password, next) => {
+  User.findOne({ email: username }, (err, user) => {
     if (err) {
       return next(err);
     }
@@ -68,11 +65,16 @@ passport.use(new LocalStrategy((username, password, next) => {
     if (!bcrypt.compareSync(password, user.password)) {
       return next(null, false, { message: "Incorrect password" });
     }
-
+    
     return next(null, user);
   });
 }));
 
+app.use(flash());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -85,7 +87,7 @@ app.locals.title = 'Rator';
 const index = require('./routes/index');
 app.use('/', index);
 const auth = require('./routes/authRoutes');
-app.use('/authentication', auth);
+app.use('/', auth);
 const review = require('./routes/reviewRoutes');
 app.use('/review', review);
 const user = require('./routes/userRoutes');

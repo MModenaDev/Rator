@@ -1,1 +1,20 @@
-<h1>profile user</h1>
+<div class="container">
+  <div class="row d-flex justify-content-between mt-4">
+    <div class="col">
+      <img src={{data.image}} class="profile-page" alt="user">
+      <p>{{data.name}}</p>
+    </div>
+    {{!-- <div class="col col xs-6 col-sm-8 col-lg-8"></div> --}}
+    <div class="col d-flex align-items-center d-flex justify-content-end">
+      <a href="#"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>Sobre:</p>
+    </div>
+    <div class="col xs-6 col-sm-8 col-lg-10 text-left mb-5">
+      <p>{{data.description}}</p>
+    </div>
+  </div>
+</div>
