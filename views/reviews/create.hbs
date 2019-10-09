@@ -1,4 +1,11 @@
 <div class="container">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Digite o nome do filme" aria-label="search"
+      aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary" type="button" id="button-addon2">Buscar</button>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-6 mt-4 mb-4">
       <div class="form-group">
@@ -6,17 +13,16 @@
         <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
           earum ex accusamus facere! Delectus id quis
           minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
-        <select class="form-control mb-2">
-          <option>Ação</option>
-          <option>Animação</option>
-          <option>Aventura</option>
-          <option>Comédia</option>
-          <option>Aventura</option>
-          <option>Ficção cientifica</option>
-          <option>Romance</option>
-          <option>Suspense</option>
-          <option>Terror</option>
-          <option>Drama</option>
+        <select class="form-control mb-2" name="genre">
+          <option value="action">Action</option>
+          <option value="animation">Animation</option>
+          <option value="adventure">Adventure</option>
+          <option value="comedy">Comedy</option>
+          <option value="drama">Drama</option>
+          <option value="horror">Horror</option>
+          <option value="romance">Romance</option>
+          <option value="sci-fi">Sci-fi</option>
+          <option value="thriller">Thriller</option>
         </select>
         <a href="#" class="btn btn-outline-success btn-block mt-3">Gostei</a>
         <a href="#" class="btn btn-outline-danger btn-block mt-2">Não Gostei</a>

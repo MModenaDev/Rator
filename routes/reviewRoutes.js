@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const User = require("../models/user");
+const Review = require("../models/reviews");
 
 router.get('/', (req, res, next) => {
     res.render('reviews/index');
 });
 
 router.get('/create', (req, res, next) => {
-    res.render('reviews/create');
+    res.render('reviews/create', {user: req.user});
 });
 
 router.get('/edit', (req, res, next) => {
@@ -56,6 +57,12 @@ router.get('/search', (req, res, next) => {
             })
             .catch(err => console.log(err));
     }
+});
+
+router.post('/create', (req, res, next) => {
+    Review
+        .create({})
+    res.render('reviews/create', {user: req.user});
 });
 
 module.exports = router;
