@@ -1,1 +1,37 @@
-<h1>edit review</h1>
+<div>
+    <div class="row">
+        <form action="/review/create-new" method="POST">
+            <div class="col-md-6 mt-4 mb-4">
+                <div class="form-group">
+                    <h5>SELECIONE UM GENERO:</h5>
+                    <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
+                        earum ex accusamus facere! Delectus id quis
+                        minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
+                    <select class="form-control mb-2" name="genre">
+                        <option value="action">Action</option>
+                        <option value="animation">Animation</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="horror">Horror</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Sci-fi</option>
+                        <option value="thriller">Thriller</option>
+                    </select>
+                    <input type="radio" name="liked" value="true">Gostei</input>
+                    <input type="radio" name="liked" value="false">Não Gostei</input>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group mt-4">
+                    <h5>REVIEW:</h5>
+                    <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
+                        earum ex accusamus facere! Delectus id quis
+                        minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
+                    <textarea class="form-control" id="descricaoTextArea" rows="6" name="text"></textarea>
+                    <button type="submit" class="btn btn btn-outline-primary mt-2">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

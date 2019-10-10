@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require("../models/user");
+const Review = require("../models/reviews");
 
 function check() {
     return function (req, res, next) {
@@ -15,22 +16,6 @@ function check() {
 
 const checkLogedIn = check();
 
-router.get('/profile/:id', checkLogedIn, (req, res, next) => {
-    const {
-        id
-    } = req.params;
-    User
-        .findById(id)
-        .then((data) => {
-            res.render('users/profile', {
-                data,
-                showStar: (id != req.user.id),
-                showCurator: (req.user.role == "CURATOR"),
-                user: req.user
-            });
-        })
-        .catch(err => console.log(err));
-});
 
 router.get('/edit', checkLogedIn, (req, res, next) => {
     const {
@@ -86,7 +71,7 @@ router.post('/edit/:id', checkLogedIn, (req, res, next) => {
     }
 });
 
-router.post('/profile/:id/updateStar',  checkLogedIn, (req, res, next) => {
+router.post('/profile/:id/updateStar', checkLogedIn, (req, res, next) => {
     console.log(req.body);
     console.log("bateu");
 
@@ -112,5 +97,31 @@ router.post('/profile/:id/updateStar',  checkLogedIn, (req, res, next) => {
         })
         .catch(err => console.log(err));
 });
+
+router.get('/profile/:id', checkLogedIn, (req, res, next) => {
+    const { id } = req.params;
+    let user = req.user;
+    User
+    .findById(id)
+    .then((userData) => {
+        Review
+        .find()
+        .then((reviewsData) => {
+                    res.render('users/profile', {
+                        userData,
+                        reviewsData,
+                        showStar: (id !== user.id),
+                        showCurator: (user.role === "CURATOR"),
+                        user: user,
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+        .catch(err => console.log(err));
+})
+
+
 
 module.exports = router;
