@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Escolha seu filme:</h5>
+        <h5 class="modal-title">Choose your movie:</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,11 +16,11 @@
   <div class="col"></div>
   <div class="col-10">
     <div class="input-group mb-3" id="movieSearchGroup">
-      <input name="movieSearch" type="text" class="form-control" placeholder="Digite o nome do filme"
+      <input name="movieSearch" type="text" class="form-control" placeholder="Type the movie name"
         aria-label="search" aria-describedby="button-addon2" id="movieSearch">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalFilme"
-          id="movieSearchButton">Buscar</button>
+          id="movieSearchButton">Search</button>
       </div>
     </div>
   </div>
@@ -34,10 +34,8 @@
         <form action="/review/create/new" method="POST">
           <input name="name" id="nameField" hidden>
           <div class="form-group">
-            <h5>SELECIONE UM GENERO:</h5>
-            <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
-              earum ex accusamus facere! Delectus id quis
-              minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
+            <h5>Genre:</h5>
+            <label for="descricaoTextArea">Pick the genre that you think best fits the movie.</label>
             <select class="form-control mb-2" name="genre">
               <option value="action">Action</option>
               <option value="animation">Animation</option>
@@ -51,10 +49,10 @@
             </select>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-danger active">
-                <input type="radio" name="liked" id="option1" value="true" autocomplete="off" checked> Gostei
+                <input type="radio" name="liked" id="option1" value="true" autocomplete="off" checked> Liked
               </label>
               <label class="btn btn-danger">
-                <input type="radio" name="liked" id="option2" value="false" autocomplete="off"> Não Gostei
+                <input type="radio" name="liked" id="option2" value="false" autocomplete="off"> Disliked
               </label>
             </div>
             {{!-- <input type="radio" name="liked" value="true">Gostei</input>
@@ -64,9 +62,7 @@
       <div class="col-md-5" >
         <div class="form-group mt-4 mb-5 box-shadow py-4 px-4">
           <h5>REVIEW:</h5>
-          <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
-            earum ex accusamus facere! Delectus id quis
-            minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
+          <label for="descricaoTextArea">Express you opinion about the movie:</label>
           <textarea class="form-control" id="descricaoTextArea" rows="7" name="text"></textarea>
           <button type="submit" class="btn btn btn-outline-secondary mt-2">Enviar</button>
         </div>

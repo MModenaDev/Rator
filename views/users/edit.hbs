@@ -27,17 +27,15 @@
     <div class="row">
       <div class="col-md-6 mt-4">
         <div class="form-group">
-          <h5>DESCRIÇÃO:</h5>
-          <label for="descricaoTextArea">Tente resumir seu estilo de curador para ter uma melhor visibilidade dentro da
-            plataforma</label>
+          <h5>DESCRIPTION:</h5>
+          <label for="descricaoTextArea">Try to briefly explain your personality so that you have better result on the platform</label>
           <textarea class="form-control" id="descricaoTextArea" rows="6" name="description">{{ data.description }}</textarea>
         </div>
       </div>
       <div class="col-md-6 mt-4">
         <div class="form-group">
-          <h5>GENERO:</h5>
-          <label for="descricaoTextArea">Escolha seus gêneros favoritos para possibilitar um melhor resultado para você,
-            e para o usuario:</label>
+          <h5>GENRE:</h5>
+          <label for="descricaoTextArea">Choose your favorite genres:</label>
           <select class="form-control mb-2" name="genre1">
             <option value="action" selected>Action</option>
             <option value="animation">Animation</option>
@@ -73,8 +71,8 @@
           </select>
         </div>
       {{/if}}
-      <button type="submit" class="btn btn-outline-secondary mt-2 mb-4" name="action" value="edit">Editar</button>
-      <button type="submit" class="btn btn-outline-secondary ml-2 mt-2 mb-4" name="action" value="delete">Deletar</button>
+      <button type="submit" class="btn btn-outline-secondary mt-2 mb-4" name="action" value="edit">Edit</button>
+      <button type="submit" class="btn btn-outline-secondary ml-2 mt-2 mb-4" name="action" value="delete">Delete</button>
       </div>
     </div>
   </form>

@@ -20,7 +20,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Entre na sua conta</h5>
+          <h5 class="modal-title">Log into your account:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -29,14 +29,14 @@
           <form action="/login" method="post">
             <div class="form-group">
               <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email" required>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Type your email" name="email" required>
             </div>
             <div class="form-group">
-              <label for="inputPassword">Senha</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha"
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Type your password"
                 name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Send</button>
           </form>
         </div>
       </div>
@@ -52,7 +52,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Faça o seu cadastro</h5>
+          <h5 class="modal-title">Register your account:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -60,26 +60,26 @@
         <div class="modal-body">
           <form action="/signup" method="post">
             <div class="form-group">
-              <label for="name">Nome</label>
-              <input class="form-control" id="nome" type="text" placeholder="Digite o seu nome completo" name="name" required>
+              <label for="name">Name</label>
+              <input class="form-control" id="nome" type="text" placeholder="Type your complete name" name="name" required>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email" required>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Type you emaiç" name="email" required>
             </div>
             <div class="form-group">
-              <label for="password">Senha</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha"
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Type your password"
                 name="password" required>
             </div>
             <div class="form-group">
-              <label for="role">Tipo</label>
+              <label for="role">Type</label>
               <select class="form-control" name="role">
                 <option value="USER" selected>User</option>
                 <option value="CURATOR">Curator</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Send</button>
           </form>
         </div>
       </div>
@@ -99,7 +99,7 @@
       <ul class="navbar-nav ml-auto">
         {{#if user}}
         <li class="nav-item">
-          <a href="/review/search" class="nav-link">Buscar</a>
+          <a href="/review/search" class="nav-link">Search</a>
         </li>
         {{#if showCurator}}
         <li class="nav-item">
@@ -107,7 +107,7 @@
         </li>
         {{/if}}
         <li class="nav-item">
-          <a href="/logout" class="nav-link">Log-out</a>
+          <a href="/logout" class="nav-link">Logout</a>
         </li>
         <li class="nav-item">
           <a href="/user/profile/{{user.id}}" class="btn btn-outline-primary ml-md-2">{{user.name}}</a>
@@ -118,7 +118,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="btn btn-outline-primary ml-md-2" data-toggle="modal"
-            data-target="#modalCadastro">Inscreva-se</a>
+            data-target="#modalCadastro">Subscribe</a>
         </li>
         {{/if}}
       </ul>
@@ -131,24 +131,24 @@
     <div class="container py-4 ">
       <div class="row">
         <div class="col">
-          <h4 class="h6">PÁGINAS</h4>
+          <h4 class="h6">PAGES</h4>
           <ul class="list-unstyled">
-            <li><a href="/review/search" class="text-secondary">Busca</a></li>
-            <li><a href="#" class="text-secondary">Contato</a></li>
+            <li><a href="/review/search" class="text-secondary">Search</a></li>
+            <li><a href="#" class="text-secondary">Contact</a></li>
             <li><a href="#" class="text-secondary" data-toggle="modal"
-            data-target="#modalCadastro">Inscreva-se</a></li>
+            data-target="#modalCadastro">Subscribe</a></li>
           </ul>
         </div>
         <div class="col-md-6">
-          <h4 class="h6">DADOS DE CONTATO</h4>
+          <h4 class="h6">CONTACT</h4>
           <ul class="list-unstyled text-secondary">
             <li>rator@rator.com.br</li>
             <li>11 99999-9999</li>
-            <li>De Seg. à Sexta das 8hrs às 18hrs</li>
+            <li>From Mon. to Fri. - 9h to 18h</li>
           </ul>
         </div>
         <div class="col">
-          <h4 class="h6">REDES SOCIAIS</h4>
+          <h4 class="h6">SOCIAL MEDIA</h4>
           <ul class="list-unstyled mt-3">
             <li><a href="#" class="btn btn-outline-secondary btn-sm btn-block mb-2"
                 style="max-width: 140px">Facebook</a></li>

@@ -1,13 +1,13 @@
 <div class="container box-shadow py-4 px-4 mt-4 mb-4">
   <div class="row mt-4">
     <div class="col-2">
-      <p>Nome:</p>
+      <p><b>Movie:</b></p>
     </div>
     <div class="col-6">
-      <p>Descricão</p>
+      <p><b>Description:</b></p>
     </div>
     <div class="col-4 d-flex justify-content-end">
-      <p>Gostou?</p>
+      <p><b>Linked?</b></p>
     </div>
   </div>
   <div class="row mb-4">
@@ -19,9 +19,9 @@
     </div>
     <div class="col-4 d-flex justify-content-end align-items-center">
       {{#if data.liked}}
-      <p href="#" class="btn btn-success">Gostei</p>
+      <p href="#" class="btn btn-success">Liked</p>
       {{else}}
-      <a href="#" class="btn btn-danger esp-b">Não Gostei</a>
+      <a href="#" class="btn btn-danger esp-b">Disliked</a>
       {{/if}}
     </div>
   </div>
