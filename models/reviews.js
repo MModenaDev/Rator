@@ -10,7 +10,7 @@ const reviewSchema = new Schema({
         type: String,
     },
     curator: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     text: {

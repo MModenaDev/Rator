@@ -4,19 +4,52 @@ const router = express.Router();
 const User = require("../models/user");
 const Review = require("../models/reviews");
 
-router.get('/', (req, res, next) => {
-    res.render('reviews/index');
+function checkRole() {
+    return function (req, res, next) {
+        if (req.isAuthenticated() && req.user.role === "CURATOR") {
+            return next();
+        } else {
+            res.redirect('/')
+        }
+    }
+}
+
+const checkCurator = checkRole();
+
+function check() {
+    return function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        } else {
+            res.redirect('/')
+        }
+    }
+}
+
+const checkLogedIn = check();
+
+router.get('/', checkLogedIn, (req, res, next) => {
+    res.render('reviews/index', {
+        user: req.user,
+        showCurator: (req.user.role == "CURATOR")
+    });
 });
 
-router.get('/create', (req, res, next) => {
-    res.render('reviews/create', {user: req.user});
+router.get('/create', checkCurator, (req, res, next) => {
+    res.render('reviews/create', {
+        user: req.user,
+        showCurator: (req.user.role == "CURATOR")
+    });
 });
 
-router.get('/edit', (req, res, next) => {
-    res.render('reviews/edit');
+router.get('/edit', checkCurator, (req, res, next) => {
+    res.render('reviews/edit', {
+        user: req.user,
+        showCurator: (req.user.role == "CURATOR")
+    });
 });
 
-router.get('/search', (req, res, next) => {
+router.get('/search', checkLogedIn, (req, res, next) => {
     const {
         genre,
         page
@@ -35,6 +68,7 @@ router.get('/search', (req, res, next) => {
             .then((data) => {
                 res.render('reviews/search', {
                     data,
+                    showCurator: (req.user.role == "CURATOR"),
                     user: req.user
                 });
             })
@@ -52,6 +86,7 @@ router.get('/search', (req, res, next) => {
             .then((data) => {
                 res.render('reviews/search', {
                     data,
+                    showCurator: (req.user.role == "CURATOR"),
                     user: req.user
                 });
             })
@@ -59,15 +94,31 @@ router.get('/search', (req, res, next) => {
     }
 });
 
-router.post('/create/new', (req, res, next) => {
-    const { id } = req.session;
-    const { name, text, genre }= req.body;
-    console.log({ name, curator: id, text, genre });
-    const newReview = new Review({ name, curator: id, text, genre });
+router.post('/create/new',  checkCurator, (req, res, next) => {
+    const {
+        id
+    } = req.session;
+    const {
+        name,
+        text,
+        liked,
+        genre
+    } = req.body;
+    const newReview = new Review({
+        name,
+        curator: id,
+        text,
+        liked,
+        genre
+    });
     newReview
         .save()
-        .then(() => { res.redirect("/")})
-        .catch((err) => {err})
+        .then(() => {
+            res.redirect("/")
+        })
+        .catch((err) => {
+            err
+        })
 });
 
 module.exports = router;

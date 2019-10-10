@@ -3,7 +3,19 @@ const router = express.Router();
 
 const User = require("../models/user");
 
-router.get('/profile/:id', (req, res, next) => {
+function check() {
+    return function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        } else {
+            res.redirect('/')
+        }
+    }
+}
+
+const checkLogedIn = check();
+
+router.get('/profile/:id', checkLogedIn, (req, res, next) => {
     const {
         id
     } = req.params;
@@ -13,13 +25,14 @@ router.get('/profile/:id', (req, res, next) => {
             res.render('users/profile', {
                 data,
                 showStar: (id != req.user.id),
+                showCurator: (req.user.role == "CURATOR"),
                 user: req.user
             });
         })
         .catch(err => console.log(err));
 });
 
-router.get('/edit', (req, res, next) => {
+router.get('/edit', checkLogedIn, (req, res, next) => {
     const {
         id
     } = req.user;
@@ -35,7 +48,7 @@ router.get('/edit', (req, res, next) => {
         .catch(err => console.log(err));
 });
 
-router.post('/edit/:id', (req, res, next) => {
+router.post('/edit/:id', checkLogedIn, (req, res, next) => {
     const {
         id
     } = req.params;
@@ -73,7 +86,7 @@ router.post('/edit/:id', (req, res, next) => {
     }
 });
 
-router.post('/profile/:id/updateStar', (req, res, next) => {
+router.post('/profile/:id/updateStar',  checkLogedIn, (req, res, next) => {
     console.log(req.body);
     console.log("bateu");
 
@@ -93,6 +106,7 @@ router.post('/profile/:id/updateStar', (req, res, next) => {
             res.render('users/profile', {
                 data,
                 showStar: (id != req.user.id),
+                showCurator: (req.session.role == "CURATOR"),
                 user: req.user
             });
         })

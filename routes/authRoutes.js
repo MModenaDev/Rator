@@ -46,7 +46,7 @@ router.post("/signup", (req, res, next) => {
           res.render("error", { message: "Something went wrong" });
         } else {
           if(role==="CURATOR") res.render("users/edit", {user: req.user});
-          else res.render("users/profile", {user: req.user});
+          else res.redirect("/");
         }
       });
     })
