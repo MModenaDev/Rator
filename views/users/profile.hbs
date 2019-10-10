@@ -33,10 +33,12 @@
       <h2>{{ this.name }}</h2>
     </div>
     <div class="col-6 d-flex justify-content-end mt-2">
+      <div class="d-flex align-items-center"><a href=""><img src="/img/edit-24px.svg" alt=""></a></div>
+      <div class="d-flex align-items-center ml-2 mr-2"><a href=""><img src="/img/delete-24px.svg" alt=""></a></div>
       {{#if this.liked}}
-      <img src="/img/star-cheio.png" id="star" class="star" alt="star-cheio"><img>
+      <div class="mt-2"><img src="/img/star-cheio.png" id="star" class="star" alt="star-cheio"><img></div>
       {{else}}
-      <img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"><img>
+      <div class="mt-2"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"><img></div>
       {{/if}}
     </div>
     <div class="col mt-2 mb-2">
