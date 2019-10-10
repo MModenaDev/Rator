@@ -28,7 +28,7 @@ function check() {
 
 const checkLogedIn = check();
 
-router.get('/:id', checkLogedIn, (req, res, next) => {
+router.get('/view/:id', checkLogedIn, (req, res, next) => {
     const { id } = req.params;
     Review
         .findById(id)

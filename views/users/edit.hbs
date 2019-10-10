@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container box-shadow mt-4 mb-4">
   <form action="/user/edit/{{ data.id }}" method="POST">
-    <div class="row">
+    <div class="row ">
       <div class="col-md-6 mt-4 mb-4">
         <div class="form-group">
           <label for="descricaoTextArea">NAME:</label>
@@ -19,13 +19,13 @@
         </div>
 
       </div>
-      <div class="col-md-6 mt-4 mb-4">
-
+      <div class="col-md-6 d-flex justify-content-center align-items-center mt-4 mb-4">
+         <img src={{data.image}} class="profile-page" alt="user">
       </div>
     </div>
     {{#if showCurator}}
     <div class="row">
-      <div class="col-md-6 mt-4 mb-4">
+      <div class="col-md-6 mt-4">
         <div class="form-group">
           <h5>DESCRIÇÃO:</h5>
           <label for="descricaoTextArea">Tente resumir seu estilo de curador para ter uma melhor visibilidade dentro da
@@ -72,10 +72,10 @@
             <option value="thriller">Thriller</option>
           </select>
         </div>
+      <button type="submit" class="btn btn-outline-secondary mt-2 mb-4" name="action" value="edit">Editar</button>
+      <button type="submit" class="btn btn-outline-secondary ml-2 mt-2 mb-4" name="action" value="delete">Deletar</button>
       </div>
       {{/if}}
-      <button type="submit" class="btn btn-outline-primary mt-2 mb-4" name="action" value="edit">Editar</button>
-      <button type="submit" class="btn btn-outline-danger mt-2 mb-4" name="action" value="delete">Deletar</button>
     </div>
   </form>
 </div>

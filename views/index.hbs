@@ -50,14 +50,14 @@
   </div>
   {{#each data}}
       <div class="row mt-4 mb-4 box-shadow">
-        <div class="col text-center">
+        <div class="col text-center mt-3">
           <img src={{ this.image }} class="profile" alt="user">
           <p>{{ this.name}}</p>
         </div>
-        <div class="col xs-6 col-sm-8 col-lg-10">
+        <div class="col xs-6 col-sm-8 col-lg-10 mt-4">
           {{ this.description }}
         </div>
-        <div class="col">
+        <div class="col d-flex align-items-center justify-content-end mt-4">
           <p class="text-right">#{{ @index }}</p>
         </div>
       </div>
