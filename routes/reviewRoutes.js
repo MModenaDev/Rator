@@ -50,11 +50,29 @@ router.get('/create', checkCurator, (req, res, next) => {
     });
 });
 
-router.get('/edit', checkCurator, (req, res, next) => {
-    res.render('reviews/edit', {
-        user: req.user,
-        showCurator: (req.user.role == "CURATOR")
-    });
+router.get('/edit/:id', checkCurator, (req, res, next) => {
+    const { id } = req.params;
+    Review
+        .findById(id)
+        .then((data) => {
+            res.render('reviews/edit', {
+                data,
+                user: req.user,
+                showCurator: (req.user.role == "CURATOR")
+            });
+        })
+        .catch((err) => console.log(err))
+});
+
+router.post('/edit/:id', checkCurator, (req, res, next) => {
+    const { id } = req.params;
+    const { liked, genre, text } = req.body;
+    Review
+        .findByIdAndUpdate(id, { liked, genre, text})
+        .then(() => {
+            res.redirect(`/review/view/${id}`)
+        })
+        .catch((err) => console.log(err))
 });
 
 router.get('/search', checkLogedIn, (req, res, next) => {
@@ -102,7 +120,7 @@ router.get('/search', checkLogedIn, (req, res, next) => {
     }
 });
 
-router.post('/create-new', checkCurator, (req, res, next) => {
+router.post('/create/new', checkCurator, (req, res, next) => {
     const {
         id
     } = req.user;

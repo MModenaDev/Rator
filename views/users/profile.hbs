@@ -27,6 +27,7 @@
     </div>
   </div>
   {{#each reviewsData}}
+  <a href="/review/view/{{this.id}}">
   <div class="row bg-light rounded box-shadow mb-4">
     <div class="col-6 mt-2">
       <h2>{{ this.name }}</h2>
@@ -42,6 +43,7 @@
       {{this.text}}
     </div>
   </div>
+  </a>
   {{/each}}
   {{/if}}
 
