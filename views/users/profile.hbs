@@ -1,26 +1,41 @@
 <div class="container">
-  <div class="row d-flex justify-content-between mt-4">
-    <div class="col">
+  <div class="row mt-4">
+    <div class="col-12 d-flex justify-content-center">
       <img src={{data.image}} class="profile-page" alt="user">
-      <p>{{data.name}}</p>
-      <input value="{{data.id}}" id="idValue" hidden>
     </div>
-    {{!-- <div class="col col xs-6 col-sm-8 col-lg-8"></div> --}}
-    <div class="col d-flex align-items-center d-flex justify-content-end">
+    <div class="col-12 d-flex justify-content-center">
+      <h2>{{data.name}}</h2>
+      <input value="{{data.id}}" id="idValue" hidden>
+
+    </div>
+    <div class="col d-flex align-items-center d-flex justify-content-center">
       {{#if showStar}}
       <span id="starHit"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"><img></span>
       {{else}}
-      <a href="/user/edit" class="btn btn-primary">Editar</a>
+      <a href="/user/edit" class="btn btn-outline-secondary">Editar</a>
       {{/if}}
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col mt-5 mb-5">
       <p>Sobre:</p>
     </div>
     <div class="col xs-6 col-sm-8 col-lg-10 text-left mb-5">
       <p>{{data.description}}</p>
     </div>
   </div>
-  
+  <div class="row bg-light rounded box-shadow mb-4">
+    <div class="col-6 mt-2">
+      <h2>Star Wars</h2>
+    </div>
+    <div class="col-6 d-flex justify-content-end mt-2">
+      <span id="starHit"><img src="/img/star-vazio.png" id="star" class="star" alt="star-vazio"><img></span>
+    </div>
+    <div class="col mt-2 mb-2">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eius laboriosam rem beatae? Quae repellendus
+      perferendis explicabo. Omnis architecto corrupti quam tempore eveniet incidunt vero accusamus nostrum!
+      Necessitatibus, voluptatibus explicabo!
+    </div>
+  </div>
+
 </div>
