@@ -147,7 +147,7 @@ router.post('/create/new', checkCurator, (req, res, next) => {
         })
 });
 
-router.post('/delete/:id', checkCurator, (req, res, next) => {
+router.get('/delete/:id', checkCurator, (req, res, next) => {
     const { id } = req.params;
     Review
         .findByIdAndDelete(id)
