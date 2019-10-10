@@ -105,7 +105,7 @@ router.get('/search', checkLogedIn, (req, res, next) => {
 router.post('/create-new', checkCurator, (req, res, next) => {
     const {
         id
-    } = req.session;
+    } = req.user;
     const {
         name,
         text,
