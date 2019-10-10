@@ -8,10 +8,9 @@ const reviewSchema = new Schema({
     },
     reference: {
         type: String,
-        required: true
     },
     curator: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     text: {
@@ -21,7 +20,6 @@ const reviewSchema = new Schema({
     },
     liked: {
         type: Boolean,
-        required: true
     },
     genre: {
         type: String,
@@ -38,8 +36,7 @@ const reviewSchema = new Schema({
             "animation",
             "adventure",
             "fantasy"
-        ],
-        minlength: 1
+        ]
     }
 }, {
   timestamps: true
