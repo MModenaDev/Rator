@@ -28,12 +28,20 @@ function check() {
 
 const checkLogedIn = check();
 
-router.get('/', checkLogedIn, (req, res, next) => {
-    res.render('reviews/index', {
-        user: req.user,
-        showCurator: (req.user.role == "CURATOR")
-    });
+router.get('/:id', checkLogedIn, (req, res, next) => {
+    const { id } = req.params;
+    Review
+        .findById(id)
+        .then((data) => {
+            res.render('reviews/index', {
+                data,
+                user: req.user,
+                showCurator: (req.user.role == "CURATOR")
+            });
+        })
+        .catch(err => console.log(err))
 });
+
 
 router.get('/create', checkCurator, (req, res, next) => {
     res.render('reviews/create', {
@@ -94,7 +102,7 @@ router.get('/search', checkLogedIn, (req, res, next) => {
     }
 });
 
-router.post('/create/new',  checkCurator, (req, res, next) => {
+router.post('/create/new', checkCurator, (req, res, next) => {
     const {
         id
     } = req.session;
@@ -119,6 +127,16 @@ router.post('/create/new',  checkCurator, (req, res, next) => {
         .catch((err) => {
             err
         })
+});
+
+router.post('/delete/:id', checkCurator, (req, res, next) => {
+    const { id } = req.params;
+    Review
+        .findByIdAndDelete(id)
+        .then(() => {
+            res.redirect("/");
+        })
+        .catch(err => console.log(err))
 });
 
 module.exports = router;
