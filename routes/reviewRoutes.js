@@ -59,10 +59,15 @@ router.get('/search', (req, res, next) => {
     }
 });
 
-router.post('/create', (req, res, next) => {
-    Review
-        .create({})
-    res.render('reviews/create', {user: req.user});
+router.post('/create/new', (req, res, next) => {
+    const { id } = req.session;
+    const { name, text, genre }= req.body;
+    console.log({ name, curator: id, text, genre });
+    const newReview = new Review({ name, curator: id, text, genre });
+    newReview
+        .save()
+        .then(() => { res.redirect("/")})
+        .catch((err) => {err})
 });
 
 module.exports = router;

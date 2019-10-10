@@ -20,7 +20,6 @@ search.onclick = () => {
                     <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalFilme" id="movieSearchButton">Buscar</button>
                   </div>`;
                     res.setAttribute("class", "btn btn-outline-primary");
-                    console.log(res.innerHTML);
                     nameField.setAttribute("value", res.innerHTML);
                 }
                 results.appendChild(res);

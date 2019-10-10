@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="row">
-    <form action="/review/create" method="POST">
+    <form action="/review/create/new" method="POST">
       <input name="name" id="nameField" hidden>
       <div class="col-md-6 mt-4 mb-4">
         <div class="form-group">
@@ -42,8 +42,8 @@
             <option value="sci-fi">Sci-fi</option>
             <option value="thriller">Thriller</option>
           </select>
-          <a href="#" class="btn btn-outline-success btn-block mt-3">Gostei</a>
-          <a href="#" class="btn btn-outline-danger btn-block mt-2">Não Gostei</a>
+          {{!-- <button class="btn btn-outline-success btn-block mt-3">Gostei</button>
+          <button class="btn btn-outline-danger btn-block mt-2">Não Gostei</button> --}}
         </div>
       </div>
       <div class="col">
@@ -52,8 +52,8 @@
           <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
             earum ex accusamus facere! Delectus id quis
             minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
-          <textarea class="form-control" id="descricaoTextArea" rows="6"></textarea>
-          <a href="#" class="btn btn btn-outline-primary mt-2">Enviar</a>
+          <textarea class="form-control" id="descricaoTextArea" rows="6" name="text"></textarea>
+          <button type="submit" class="btn btn btn-outline-primary mt-2">Enviar</button>
         </div>
       </div>
     </form>
