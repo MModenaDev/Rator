@@ -1,1 +1,80 @@
-<h1>create review</h1>
+<div class="modal" id="modalFilme" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Escolha seu filme:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="movieResults">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid row mt-4">
+  <div class="col"></div>
+  <div class="col-10">
+    <div class="input-group mb-3" id="movieSearchGroup">
+      <input name="movieSearch" type="text" class="form-control" placeholder="Digite o nome do filme"
+        aria-label="search" aria-describedby="button-addon2" id="movieSearch">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalFilme"
+          id="movieSearchButton">Buscar</button>
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-1"></div>
+      <div class="col-md-5 mt-4 mb-5 box-shadow py-4 px-4">
+        <form action="/review/create/new" method="POST">
+          <input name="name" id="nameField" hidden>
+          <div class="form-group">
+            <h5>SELECIONE UM GENERO:</h5>
+            <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
+              earum ex accusamus facere! Delectus id quis
+              minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
+            <select class="form-control mb-2" name="genre">
+              <option value="action">Action</option>
+              <option value="animation">Animation</option>
+              <option value="adventure">Adventure</option>
+              <option value="comedy">Comedy</option>
+              <option value="drama">Drama</option>
+              <option value="horror">Horror</option>
+              <option value="romance">Romance</option>
+              <option value="sci-fi">Sci-fi</option>
+              <option value="thriller">Thriller</option>
+            </select>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-danger active">
+                <input type="radio" name="liked" id="option1" value="true" autocomplete="off" checked> Gostei
+              </label>
+              <label class="btn btn-danger">
+                <input type="radio" name="liked" id="option2" value="false" autocomplete="off"> Não Gostei
+              </label>
+            </div>
+            {{!-- <input type="radio" name="liked" value="true">Gostei</input>
+              <input type="radio" name="liked" value="false">Não Gostei</input> --}}
+          </div>
+      </div>
+      <div class="col-md-5" >
+        <div class="form-group mt-4 mb-5 box-shadow py-4 px-4">
+          <h5>REVIEW:</h5>
+          <label for="descricaoTextArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem alias
+            earum ex accusamus facere! Delectus id quis
+            minima dolor aliquid velit commodi vero. Ipsa dolor, fuga nam iusto tenetur autem?a</label>
+          <textarea class="form-control" id="descricaoTextArea" rows="7" name="text"></textarea>
+          <button type="submit" class="btn btn btn-outline-secondary mt-2">Enviar</button>
+        </div>
+      </div>
+      </form>
+      <div class="col-1"></div>
+
+    </div>
+  </div>
+
+</div>

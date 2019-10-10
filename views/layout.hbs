@@ -29,12 +29,12 @@
           <form action="/login" method="post">
             <div class="form-group">
               <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email" required>
             </div>
             <div class="form-group">
               <label for="inputPassword">Senha</label>
               <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha"
-                name="password">
+                name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
@@ -61,16 +61,16 @@
           <form action="/signup" method="post">
             <div class="form-group">
               <label for="name">Nome</label>
-              <input class="form-control" id="nome" type="text" placeholder="Digite o seu nome completo" name="name">
+              <input class="form-control" id="nome" type="text" placeholder="Digite o seu nome completo" name="name" required>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email" name="email" required>
             </div>
             <div class="form-group">
               <label for="password">Senha</label>
               <input type="password" class="form-control" id="inputPassword" placeholder="Digite sua senha"
-                name="password">
+                name="password" required>
             </div>
             <div class="form-group">
               <label for="role">Tipo</label>
@@ -99,13 +99,18 @@
       <ul class="navbar-nav ml-auto">
         {{#if user}}
         <li class="nav-item">
-          <a href="/reviews/search" class="nav-link">Buscar</a>
+          <a href="/review/search" class="nav-link">Buscar</a>
         </li>
+        {{#if showCurator}}
+        <li class="nav-item">
+          <a href="/review/create" class="nav-link">Review</a>
+        </li>
+        {{/if}}
         <li class="nav-item">
           <a href="/logout" class="nav-link">Log-out</a>
         </li>
         <li class="nav-item">
-          <a href="/user/" class="btn btn-outline-primary ml-md-2">{{user.name}}</a>
+          <a href="/user/profile/{{user.id}}" class="btn btn-outline-primary ml-md-2">{{user.name}}</a>
         </li>
         {{else}}
         <li class="nav-item">
@@ -128,9 +133,10 @@
         <div class="col">
           <h4 class="h6">PÁGINAS</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-secondary">Busca</a></li>
+            <li><a href="/review/search" class="text-secondary">Busca</a></li>
             <li><a href="#" class="text-secondary">Contato</a></li>
-            <li><a href="#" class="text-secondary">Inscreva-se</a></li>
+            <li><a href="#" class="text-secondary" data-toggle="modal"
+            data-target="#modalCadastro">Inscreva-se</a></li>
           </ul>
         </div>
         <div class="col-md-6">
@@ -143,7 +149,7 @@
         </div>
         <div class="col">
           <h4 class="h6">REDES SOCIAIS</h4>
-          <ul class="list-unstyled">
+          <ul class="list-unstyled mt-3">
             <li><a href="#" class="btn btn-outline-secondary btn-sm btn-block mb-2"
                 style="max-width: 140px">Facebook</a></li>
             <li><a href="#" class="btn btn-outline-secondary btn-sm btn-block mb-2" style="max-width: 140px">Twitter</a>
@@ -160,15 +166,16 @@
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    </script>
 
   <script src="/javascript/script.js"></script>
+  <script src="/javascript/movie.js"></script>
 </body>
 
 </html>
