@@ -105,7 +105,7 @@ router.get('/profile/:id', checkLogedIn, (req, res, next) => {
     .findById(id)
     .then((userData) => {
         Review
-        .find()
+        .find({curator: id})
         .then((reviewsData) => {
                     res.render('users/profile', {
                         userData,
