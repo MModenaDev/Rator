@@ -107,6 +107,7 @@ router.get('/profile/:id', checkLogedIn, (req, res, next) => {
         Review
         .find({curator: id})
         .then((reviewsData) => {
+                    reviewsData.forEach((elem) => elem.showStar = (id !== user.id));
                     res.render('users/profile', {
                         userData,
                         reviewsData,
