@@ -1,5 +1,5 @@
-# Space Invader "Clone"
-> "RATOR - find your movies is site build in HTML, CSS, Bootstrap, JS, node.js and mongodb.
+# RATOR
+> Site build in HTML, CSS, Bootstrap, JS, node.js and mongodb.
 > This site is in beta version 0.0.1
 #### TLDR: http://rator.herokuapp.com/
 
@@ -27,8 +27,8 @@ Instructions for the site:
 
 ## Meta
 
-Rafael Dias – [@rs_dias](https://twitter.com/rs_dias) – rafaels.dias@me.com
-Marco Modena - [@anedom](https://twitter.com/anedom) - marco.modena@tutanota.com
+Marco Modena - [@anedom](https://twitter.com/anedom) - marco.modena@tutanota.com  
+Rafael Dias – [@rs_dias](https://twitter.com/rs_dias) – rafaels.dias@me.com  
 
 Distributed under the GNU Lesser General Public License v3.0.
 
